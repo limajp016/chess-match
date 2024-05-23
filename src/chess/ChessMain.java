@@ -1,9 +1,14 @@
 package chess;
 
+import chess.boardGame.Position;
+
 public class ChessMain {
 
 	public static void main(String[] args) {
-		System.out.println("It's a Chess Match!");
+		
+		Position pos = new Position(4, 3);
+		
+		System.out.println(pos);
 
 	}
 
