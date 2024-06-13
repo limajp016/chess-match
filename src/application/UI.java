@@ -53,10 +53,15 @@ public class UI {
 		printBoard(cm.getPieces());
 		System.out.println();
 		printCapturedPieces(captured);
-		System.out.println("Turn: " + cm.getTurn());
-		System.out.println("Waiting player: " +  cm.getCurrentPlayer());
-		if (cm.isCheck()) {
-			System.out.println("CHECK");
+		System.out.println("Turn: " + cm.getTurn());		
+		if(!cm.isCheckmate()) {
+			System.out.println("Waiting player: " +  cm.getCurrentPlayer());
+			if (cm.isCheck()) {
+				System.out.println("CHECK");
+			}
+		} else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Winner: " + cm.getCurrentPlayer());
 		}
 	}
 	
@@ -93,7 +98,7 @@ public class UI {
 			if (piece.getColor() == Color.WHITE) {
 				System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
 			} else {
-				System.out.print(ANSI_RED + piece + ANSI_RESET);
+				System.out.print(ANSI_BLACK + piece + ANSI_RESET);
 			}
 		}
 		System.out.print(" ");
@@ -108,7 +113,7 @@ public class UI {
 		System.out.print(ANSI_RESET);
 		System.out.println();
 		System.out.print("Black: ");
-		System.out.print(ANSI_RED);
+		System.out.print(ANSI_BLACK);
 		System.out.print(Arrays.toString(black.toArray()));
 		System.out.println(ANSI_RESET);
 	}
